@@ -1,6 +1,10 @@
 import { Outlet, Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { RelationshipContext } from '../contexts/RelationshipContext';
 
 export default function MainLayout() {
+  const { relationshipMode, toggleRelationshipMode } = useContext(RelationshipContext);
+
   return (
     <div id="app">
       <header>
@@ -17,6 +21,13 @@ export default function MainLayout() {
           <input type="text" className="search-bar" placeholder="search" />
         </div>
         <div className="header-actions">
+          <button 
+            className={`btn-nav ${relationshipMode ? 'active' : ''}`}
+            onClick={toggleRelationshipMode}
+            title={relationshipMode ? 'Exit relationship mode' : 'Create relationships'}
+          >
+            RELATE +
+          </button>
           <Link to="/add">
             <button className="btn-nav">ADD +</button>
           </Link>

@@ -1,0 +1,38 @@
+.relationship-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 6px;
+  color: var(--text-dark);
+  font-family: var(--font-main);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.relationship-button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: scale(1.05);
+}
+
+.relationship-button.selected {
+  background-color: #4CAF50;
+  border-color: #45a049;
+  color: white;
+  box-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
+}
+
+.relationship-button .icon {
+  font-size: 1.1rem;
+}
+
+.relationship-button .label {
+  font-weight: 600;
+}

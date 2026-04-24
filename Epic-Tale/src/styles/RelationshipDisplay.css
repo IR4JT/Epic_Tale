@@ -1,0 +1,93 @@
+.relationships-section {
+  padding: 1.5rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-md);
+  margin-top: 1rem;
+}
+
+.relationships-toggle {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  transition: all 0.2s ease;
+}
+
+.relationships-toggle:hover {
+  opacity: 0.8;
+}
+
+.toggle-arrow {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  display: inline-flex;
+  align-items: center;
+  min-width: 1rem;
+}
+
+.relationships-title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  text-align: left;
+}
+
+.relationships-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+  }
+  to {
+    opacity: 1;
+    max-height: 1000px;
+  }
+}
+
+.relationship-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  color: var(--text-dark);
+  transition: all 0.2s ease;
+  border-left: 3px solid #4CAF50;
+}
+
+.relationship-item:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+  transform: translateX(4px);
+  box-shadow: var(--shadow-soft);
+}
+
+.rel-name {
+  font-weight: 700;
+}
+
+.rel-type {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.rel-level {
+  font-size: 0.8rem;
+  color: #4CAF50;
+  margin-left: auto;
+  flex-shrink: 0;
+}
