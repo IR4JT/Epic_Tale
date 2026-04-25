@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { supabase } from '../../utils/supabase'
 
 export default function AddMedia() {
-    const [form, setForm] = useState({ name: '', description: '', author: '', type_id: '' })
+    const [form, setForm] = useState({ name: '', description: '', author: '', type_id: '', image_url: '' })
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [successMessage, setSuccessMessage] = useState('')
     const [errorMessage, setErrorMessage] = useState('')
@@ -61,13 +61,13 @@ export default function AddMedia() {
 
         const { error: mediaError } = await supabase
             .from('media')
-            .insert([{ name: form.name, description: form.description, creator_id: authorId, type_id: form.type_id }])
+            .insert([{ name: form.name, description: form.description, creator_id: authorId, type_id: form.type_id, image_url: form.image_url }])
 
         if (mediaError) {
             setErrorMessage(mediaError.message)
         } else {
             setSuccessMessage('Media added successfully!')
-            setForm({ name: '', description: '', author: '', type_id: '' })
+            setForm({ name: '', description: '', author: '', type_id: '', image_url: '' })
         }
         setIsSubmitting(false)
     }
@@ -77,10 +77,18 @@ export default function AddMedia() {
             <form onSubmit={handleSubmit}>
                 <div className="detail-top">
                     <div className="cover-photo-container">
-                        <div className="placeholder-cover">
-                            <h2>+</h2>
-                            <div>Add Cover Photo</div>
-                        </div>
+                        {form.image_url ? (
+                            <img 
+                                src={form.image_url} 
+                                alt="Cover preview" 
+                                style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '8px' }} 
+                            />
+                        ) : (
+                            <div className="placeholder-cover">
+                                <h2>+</h2>
+                                <div>Add Cover Photo</div>
+                            </div>
+                        )}
                     </div>
                     <div className="detail-info">
                         <div className="input-group">
@@ -113,6 +121,16 @@ export default function AddMedia() {
                                 value={form.author}
                                 onChange={handleChange}
                                 required
+                            />
+                        </div>
+                        <div className="input-group">
+                            <input
+                                name="image_url"
+                                type="text"
+                                className="input-text"
+                                placeholder="Image URL..."
+                                value={form.image_url}
+                                onChange={handleChange}
                             />
                         </div>
                         <div className="input-group">
